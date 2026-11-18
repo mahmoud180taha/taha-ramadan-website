@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دراسة جدوى متكاملة | TAHA Ramadan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --navy: #0b2d50;
+        --red: #e40613;
+        --blue: #078bc3;
+        --text: #1d354a;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        overflow-x: hidden;
+        background: #f4f8fb;
+        color: var(--text);
+        font-family: "Cairo", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 42px));
+        margin: auto;
+      }
+
+      .page-transition {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: linear-gradient(135deg, #061b31, #0b2d50, #e40613);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.45s ease;
+      }
+
+      .page-transition.entering {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .page-transition.leaving {
+        transform: scaleX(1);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.97);
+        border-bottom: 1px solid #e5edf2;
+        box-shadow: 0 4px 20px rgba(6, 27, 49, 0.05);
+      }
+
+      .navbar {
+        min-height: 84px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+      }
+
+      .navbar-logo {
+        display: flex;
+        width: 155px;
+      }
+
+      .navbar-logo img {
+        width: 100%;
+        max-height: 64px;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 27px;
+      }
+
+      .nav-links a {
+        color: #405365;
+        font-size: 14px;
+        font-weight: 700;
+        transition: 0.25s;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active {
+        color: var(--navy);
+      }
+
+      .nav-button {
+        padding: 11px 20px;
+        border-radius: 7px;
+        background: var(--red);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 800;
+        transition: 0.25s;
+      }
+
+      .nav-button:hover,
+      .apply-submit:hover {
+        background: var(--navy);
+        transform: translateY(-3px);
+      }
+
+      .menu-button {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 7px;
+        background: #eef3f7;
+        cursor: pointer;
+      }
+
+      .menu-button span {
+        display: block;
+        width: 21px;
+        height: 2px;
+        margin: 4px auto;
+        background: var(--navy);
+      }
+
+      .article-hero {
+        padding: 75px 0;
+        background:
+          radial-gradient(circle at 85% 20%, rgba(0, 168, 235, 0.2), transparent 25%),
+          linear-gradient(135deg, #061b31, #0b3e68);
+      }
+
+      .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        color: #b9cad6;
+        font-size: 13px;
+      }
+
+      .breadcrumb strong {
+        color: #fff;
+      }
+
+      .article-hero h1 {
+        margin-top: 30px;
+        color: #fff;
+        font-size: clamp(35px, 5vw, 60px);
+        line-height: 1.4;
+      }
+
+      .article-hero p {
+        max-width: 760px;
+        margin-top: 16px;
+        color: #c6d5df;
+        font-size: 15px;
+        line-height: 2;
+      }
+
+      .article-page {
+        padding: 75px 0 110px;
+      }
+
+      .content-layout {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.6fr);
+        gap: 28px;
+        align-items: start;
+        direction: ltr;
+      }
+
+      .apply-card,
+      .article-content {
+        direction: rtl;
+      }
+
+      .apply-card {
+        position: sticky;
+        top: 105px;
+        padding: 28px;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 13px 34px rgba(11, 45, 80, 0.1);
+      }
+
+      .apply-card-top {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 20px;
+      }
+
+      .apply-card-top i {
+        display: grid;
+        place-items: center;
+        width: 43px;
+        height: 43px;
+        border-radius: 11px;
+        background: #e6f2f8;
+        color: var(--blue);
+      }
+
+      .apply-card h2 {
+        color: var(--navy);
+        font-size: 20px;
+      }
+
+      .apply-card > p {
+        margin-bottom: 20px;
+        color: #687987;
+        font-size: 12px;
+        line-height: 1.9;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .form-group label {
+        color: var(--navy);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        border: 1px solid #d9e4eb;
+        border-radius: 7px;
+        outline: none;
+        background: #f9fbfc;
+        font-family: inherit;
+        font-size: 12px;
+        padding: 11px 12px;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px rgba(7, 139, 195, 0.12);
+      }
+
+      .apply-submit {
+        width: 100%;
+        min-height: 48px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--red);
+        color: #fff;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        transition: 0.25s;
+      }
+
+      .apply-note {
+        display: block;
+        margin-top: 13px;
+        color: #84929d;
+        font-size: 10px;
+        text-align: center;
+      }
+
+      .article-content {
+        padding: 38px;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 10px 27px rgba(11, 45, 80, 0.05);
+      }
+
+      .article-content h2 {
+        color: var(--navy);
+        font-size: 27px;
+        margin: 28px 0 12px;
+      }
+
+      .article-content h2:first-child {
+        margin-top: 0;
+      }
+
+      .article-content p {
+        color: #60717e;
+        font-size: 14px;
+        line-height: 2.15;
+      }
+
+      .article-content ul {
+        display: grid;
+        gap: 12px;
+        margin: 22px 0;
+        list-style: none;
+      }
+
+      .article-content li {
+        display: flex;
+        gap: 10px;
+        color: #536674;
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      .article-content li i {
+        margin-top: 5px;
+        color: #0a9e70;
+      }
+
+      .highlight-box {
+        display: flex;
+        gap: 15px;
+        margin: 30px 0;
+        padding: 22px;
+        border-right: 4px solid var(--red);
+        border-radius: 9px;
+        background: #f1f7fa;
+      }
+
+      .highlight-box i {
+        color: var(--red);
+        font-size: 24px;
+      }
+
+      .highlight-box h3 {
+        color: var(--navy);
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      .highlight-box p {
+        font-size: 13px;
+      }
+
+      .site-footer {
+        padding: 22px 0;
+        background: #041323;
+        color: #b4c4d0;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .footer-content p,
+      .footer-links a {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 19px;
+      }
+
+      .request-floating {
+        position: fixed;
+        z-index: 2000;
+        right: 24px;
+        bottom: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 20px;
+        border-radius: 9px;
+        background: var(--red);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(228, 6, 19, 0.32);
+        font-size: 14px;
+        font-weight: 800;
+        transition: 0.25s;
+      }
+
+      .request-floating:hover {
+        background: var(--navy);
+        transform: translateY(-4px);
+      }
+
+      .social-widget {
+        position: fixed;
+        z-index: 2000;
+        left: 24px;
+        bottom: 24px;
+      }
+
+      .social-toggle,
+      .social-menu a {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border: 0;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .social-toggle {
+        background: var(--red);
+        font-size: 20px;
+      }
+
+      .social-menu {
+        position: absolute;
+        bottom: 62px;
+        display: grid;
+        gap: 10px;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.3s;
+      }
+
+      .social-menu.open {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .social-menu a {
+        box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      .phone { background: #0b2d50; }
+      .whatsapp { background: #25d366; }
+      .facebook { background: #1877f2; }
+      .twitter { background: #111; }
+      .linkedin { background: #0a66c2; }
+      .instagram { background: #d62976; }
+
+      @media (max-width: 900px) {
+        .content-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .apply-card {
+          position: static;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .navbar {
+          min-height: 74px;
+          flex-wrap: wrap;
+        }
+
+        .navbar-logo {
+          width: 135px;
+        }
+
+        .menu-button {
+          display: block;
+        }
+
+        .nav-button {
+          display: none;
+        }
+
+        .nav-links {
+          display: none;
+          order: 3;
+          width: 100%;
+          padding: 5px 0 18px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 13px;
+        }
+
+        .nav-links.show {
+          display: flex;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .article-hero {
+          padding: 55px 0;
+        }
+
+        .article-page {
+          padding: 50px 0 95px;
+        }
+
+        .article-content,
+        .apply-card {
+          padding: 22px;
+        }
+
+        .article-content h2 {
+          font-size: 23px;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .request-floating {
+          right: 16px;
+          bottom: 16px;
+          font-size: 12px;
+        }
+
+        .social-widget {
+          left: 16px;
+          bottom: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-transition entering" id="pageTransition"></div>
+
+    <header class="site-header">
+      <div class="container navbar">
+        <a href="index.html#home" class="navbar-logo" data-transition>
+          <img
+            src="assists/اللوجو الجديدي بدون خلفيه.png"
+            alt="TAHA Ramadan"
+          />
+        </a>
+
+        <button class="menu-button" id="menuButton" aria-label="فتح القائمة">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html#home" data-transition>الرئيسية</a>
+          <a href="index.html#about" data-transition>من نحن</a>
+          <a class="active" href="index.html#services" data-transition>خدماتنا</a>
+          <a href="index.html#sectors" data-transition>القطاعات</a>
+          <a href="index.html#contact" data-transition>تواصل معنا</a>
+        </nav>
+
+        <a href="request.html" class="nav-button" data-transition>
+          اطلب استشارة
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="article-hero">
+        <div class="container">
+          <div class="breadcrumb">
+            <a href="index.html" data-transition>الرئيسية</a>
+            <span>/</span>
+            <a href="feasibility.html" data-transition>دراسات الجدوى</a>
+            <span>/</span>
+            <strong>دراسة جدوى متكاملة</strong>
+          </div>
+
+          <h1>دراسة الجدوى المتكاملة</h1>
+
+          <p>
+            دراسة شاملة تجمع بين التحليل السوقي والفني والمالي والاقتصادي
+            لتقديم رؤية متكاملة تساعدك على اتخاذ قرار استثماري واضح.
+          </p>
+        </div>
+      </section>
+
+      <section class="article-page">
+        <div class="container content-layout">
+          <aside class="apply-card">
+            <div class="apply-card-top">
+              <i class="fa-solid fa-file-circle-check"></i>
+              <h2>اطلب دراسة جدوى</h2>
+            </div>
+
+            <p>
+              اترك بياناتك وسيتواصل معك فريقنا لمناقشة مشروعك وتحديد احتياجاته.
+            </p>
+
+            <form
+              action="https://formsubmit.co/YOUR_COMPANY_EMAIL@gmail.com"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="طلب دراسة جدوى متكاملة جديد"
+              />
+
+              <input
+                type="hidden"
+                name="service"
+                value="دراسة جدوى متكاملة"
+              />
+
+              <div class="form-group">
+                <label for="name">الاسم بالكامل</label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  placeholder="اكتب اسمك"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  placeholder="01xxxxxxxxx"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="example@email.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">نبذة عن المشروع</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="اكتب نبذة قصيرة عن مشروعك"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="apply-submit">
+                قدم طلبك الآن
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+
+              <span class="apply-note">
+                لن نشارك بياناتك مع أي جهة أخرى.
+              </span>
+            </form>
+          </aside>
+
+          <article class="article-content">
+            <h2>ما هي دراسة الجدوى المتكاملة؟</h2>
+
+            <p>
+              دراسة الجدوى المتكاملة هي دراسة شاملة تجمع كل الجوانب المهمة
+              للمشروع في ملف واحد. تشمل تحليل السوق، ودراسة المنافسين، وتحديد
+              الاحتياجات الفنية، وتحليل التكاليف والإيرادات، وتقييم الجدوى
+              الاقتصادية والمالية للمشروع.
+            </p>
+
+            <h2>لماذا تحتاج إلى دراسة جدوى متكاملة؟</h2>
+
+            <p>
+              عندما يكون المشروع كبيرًا أو يحتاج إلى تمويل أو شراكة استثمارية،
+              فإن دراسة جانب واحد لا تكون كافية. الدراسة المتكاملة تمنحك رؤية
+              كاملة تساعدك على معرفة نقاط القوة والمخاطر وفرص النجاح قبل البدء.
+            </p>
+
+            <ul>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>رؤية شاملة لجميع جوانب المشروع في دراسة واحدة.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>تحديد حجم الاستثمار والتمويل المطلوب بدقة.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>تحليل السوق والمنافسة والعملاء المستهدفين.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>تقييم التكاليف والعائد ونقطة التعادل والمخاطر.</span>
+              </li>
+            </ul>
+
+            <div class="highlight-box">
+              <i class="fa-solid fa-layer-group"></i>
+              <div>
+                <h3>كل تفاصيل مشروعك في رؤية واحدة</h3>
+                <p>
+                  الدراسة المتكاملة تساعدك على الانتقال من مجرد فكرة إلى خطة
+                  قابلة للتنفيذ ومدعومة بالأرقام والتحليل.
+                </p>
+              </div>
+            </div>
+
+            <h2>ماذا تشمل دراسة الجدوى المتكاملة؟</h2>
+
+            <p>
+              نقوم بتجهيز دراسة متكاملة تناسب طبيعة مشروعك والقطاع المستهدف،
+              وتساعدك على تقديم ملف احترافي للمستثمرين أو جهات التمويل أو
+              الشركاء المحتملين.
+            </p>
+
+            <ul>
+              <li>
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>الدراسة السوقية وتحليل العملاء والمنافسين.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-gears"></i>
+                <span>الدراسة الفنية ومتطلبات التشغيل والتجهيزات.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-calculator"></i>
+                <span>الدراسة المالية والتكاليف والإيرادات المتوقعة.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-chart-line"></i>
+                <span>الدراسة الاقتصادية وتقييم أثر المشروع وعائده.</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>تحليل المخاطر ووضع توصيات عملية لتقليلها.</span>
+              </li>
+            </ul>
+
+            <h2>متى تحتاج إلى دراسة جدوى متكاملة؟</h2>
+
+            <p>
+              تحتاج إليها عند تأسيس مشروع جديد، أو التوسع في مشروع قائم، أو
+              التقدم للحصول على قرض أو تمويل، أو البحث عن مستثمرين، أو عند
+              الرغبة في الدخول إلى سوق جديد بخطة واضحة ومدروسة.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© 2026 TAHA Ramadan. جميع الحقوق محفوظة.</p>
+
+        <div class="footer-links">
+          <a href="index.html#home" data-transition>الرئيسية</a>
+          <a href="index.html#services" data-transition>خدماتنا</a>
+          <a href="index.html#contact" data-transition>تواصل معنا</a>
+        </div>
+      </div>
+    </footer>
+
+    <a href="request.html" class="request-floating" data-transition>
+      <i class="fa-solid fa-paper-plane"></i>
+      قدم طلب الآن
+    </a>
+
+    <div class="social-widget">
+      <div class="social-menu" id="socialMenu">
+        <a href="tel:+201222209161" class="phone" aria-label="اتصال">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+
+        <a
+          href="https://wa.me/201222209161"
+          class="whatsapp"
+          target="_blank"
+          aria-label="واتساب"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <a
+          href="https://facebook.com/YOUR_PAGE"
+          class="facebook"
+          target="_blank"
+          aria-label="فيسبوك"
+        >
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a
+          href="https://x.com/YOUR_ACCOUNT"
+          class="twitter"
+          target="_blank"
+          aria-label="منصة إكس"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a
+          href="https://linkedin.com/company/YOUR_COMPANY"
+          class="linkedin"
+          target="_blank"
+          aria-label="لينكد إن"
+        >
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <a
+          href="https://instagram.com/YOUR_ACCOUNT"
+          class="instagram"
+          target="_blank"
+          aria-label="إنستجرام"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+      <button class="social-toggle" id="socialToggle" aria-label="وسائل التواصل">
+        <i class="fa-solid fa-comments"></i>
+      </button>
+    </div>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      const pageTransition = document.getElementById("pageTransition");
+      const socialToggle = document.getElementById("socialToggle");
+      const socialMenu = document.getElementById("socialMenu");
+
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          pageTransition.classList.remove("entering");
+        }, 100);
+      });
+
+      menuButton.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+
+      socialToggle.addEventListener("click", () => {
+        socialMenu.classList.toggle("open");
+      });
+
+      document.querySelectorAll("a[data-transition]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const destination = link.getAttribute("href");
+
+          if (!destination || destination.startsWith("#")) {
+            return;
+          }
+
+          event.preventDefault();
+          pageTransition.classList.add("leaving");
+
+          setTimeout(() => {
+            window.location.href = destination;
+          }, 450);
+        });
+      });
+    </script>
+  </body>
+</html>

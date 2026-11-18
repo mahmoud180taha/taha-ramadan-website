@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>طرح الأراضي الصناعية | طه رمضان للاستشارات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --primary:#092c49;
+  --secondary:#10517a;
+  --red:#ed0010;
+  --bg:#f2f7fa;
+  --text:#173b5b;
+  --muted:#8295a7;
+  --white:#fff;
+  --border:#e4ebf1;
+  --green:#159b68;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1210px,92%);margin:auto}
+
+/* HEADER */
+header{
+  background:#fff;height:87px;position:sticky;top:0;z-index:1000;
+  box-shadow:0 3px 18px #092c4910
+}
+.navbar{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo img{width:90px;height:auto;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:27px;font-size:14px;font-weight:700}
+.nav-links a:hover{color:var(--red)}
+.nav-action{background:var(--primary);color:white;padding:11px 20px;border-radius:8px;font-size:13px;font-weight:700}
+.menu-btn{display:none;border:0;background:none;font-size:24px;color:var(--primary)}
+
+/* HERO */
+.hero{
+  background:linear-gradient(120deg,#09263f,#10517a);
+  color:white;padding:55px 0 65px;position:relative;overflow:hidden
+}
+.hero:after{
+  content:"";position:absolute;width:420px;height:420px;border:70px solid #ffffff09;
+  border-radius:50%;left:-100px;top:-220px
+}
+.breadcrumb{font-size:13px;color:#c5d9e8;margin-bottom:22px}
+.breadcrumb span{color:white}
+.hero h1{font-size:36px;font-weight:900;margin-bottom:12px;position:relative;z-index:1}
+.hero p{color:#d6e6f1;font-size:15px;max-width:700px;line-height:2.1;position:relative;z-index:1}
+
+/* GENERAL */
+.section{padding:45px 0}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{font-size:25px;color:var(--primary);font-weight:900}
+.section-title p{color:var(--muted);font-size:14px;margin-top:8px}
+.hidden{display:none!important}
+.btn{
+  border:0;background:var(--red);color:white;padding:12px 22px;
+  border-radius:8px;font-weight:800;transition:.2s
+}
+.btn:hover{background:#c9000e;transform:translateY(-2px)}
+.btn-secondary{background:var(--primary)}
+.btn-secondary:hover{background:var(--secondary)}
+.back-btn{
+  background:white;border:1px solid var(--border);padding:10px 17px;
+  border-radius:8px;color:var(--primary);font-weight:700;margin-bottom:22px
+}
+
+/* AUTHORITY CARDS */
+.authority-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px;max-width:900px;margin:auto}
+.authority-card{
+  background:white;border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;cursor:pointer;transition:.3s;box-shadow:0 8px 30px #092c4908
+}
+.authority-card:hover{transform:translateY(-7px);box-shadow:0 15px 35px #092c4918;border-color:#b9d0e0}
+.authority-image{height:210px;position:relative;overflow:hidden}
+.authority-image img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.authority-card:hover img{transform:scale(1.05)}
+.authority-content{padding:24px}
+.authority-content h3{font-size:20px;color:var(--primary);margin-bottom:8px}
+.authority-content p{font-size:13px;color:var(--muted);line-height:2;margin-bottom:17px}
+.card-link{color:var(--red);font-weight:800;font-size:14px}
+
+/* COUNTDOWN */
+.countdown-box{
+  background:linear-gradient(120deg,#092c49,#10517a);
+  color:white;border-radius:15px;padding:25px 30px;margin-bottom:30px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap
+}
+.countdown-info h2{font-size:21px;margin-bottom:5px}
+.countdown-info p{font-size:13px;color:#c9dbe8}
+.timer{display:flex;gap:10px;direction:ltr}
+.timer-unit{
+  background:#ffffff17;border:1px solid #ffffff20;border-radius:9px;
+  width:72px;text-align:center;padding:10px 5px
+}
+.timer-unit strong{display:block;font-size:25px;font-weight:900}
+.timer-unit span{font-size:11px;color:#d1e1ec}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:30px}
+.stat{background:white;border:1px solid var(--border);padding:18px;border-radius:12px;display:flex;gap:13px;align-items:center}
+.stat i{width:45px;height:45px;background:#eaf2f8;border-radius:10px;display:grid;place-items:center;color:var(--secondary);font-size:20px}
+.stat strong{display:block;font-size:20px;color:var(--primary)}
+.stat span{font-size:12px;color:var(--muted)}
+
+/* CITIES */
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.city-card{background:white;border-radius:13px;overflow:hidden;border:1px solid var(--border);transition:.3s}
+.city-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px #092c4912}
+.city-card img{width:100%;height:175px;object-fit:cover}
+.city-content{padding:18px}
+.city-content h3{font-size:17px;color:var(--primary);margin-bottom:7px}
+.city-content p{font-size:12px;color:var(--muted);margin-bottom:15px}
+.city-meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:13px;font-size:12px}
+.available{color:var(--green);font-weight:800}
+
+/* FILTER */
+.filter-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  flex-wrap:wrap;margin-bottom:22px
+}
+.search-box{position:relative;max-width:350px;width:100%}
+.search-box input{width:100%;padding:12px 40px 12px 12px;border:1px solid var(--border);border-radius:8px;outline:none;background:white}
+.search-box i{position:absolute;right:14px;top:15px;color:var(--muted)}
+.filter-bar select{padding:12px;border:1px solid var(--border);border-radius:8px;background:white;outline:none}
+
+/* LAND TABLE */
+.land-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.land-card{background:white;border:1px solid var(--border);border-radius:12px;padding:20px;transition:.2s}
+.land-card:hover{border-color:#9bbbd1;box-shadow:0 8px 25px #092c4910}
+.land-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}
+.land-head h3{font-size:17px;color:var(--primary)}
+.status{background:#e7f7ef;color:var(--green);font-size:11px;padding:5px 10px;border-radius:20px;font-weight:800}
+.land-details{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.detail{background:#f6f9fb;padding:11px;border-radius:8px}
+.detail span{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+.detail strong{font-size:14px;color:var(--primary)}
+.land-location{font-size:12px;color:var(--muted);margin:14px 0;line-height:1.8}
+.land-location i{color:var(--red);margin-left:5px}
+.land-footer{border-top:1px solid var(--border);padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.total-price strong{display:block;color:var(--red);font-size:17px}
+.total-price span{font-size:11px;color:var(--muted)}
+.land-footer button{font-size:12px;padding:10px 14px}
+
+/* FORM */
+.form-wrapper{max-width:750px;margin:auto;background:white;padding:30px;border:1px solid var(--border);border-radius:15px}
+.selected-land{background:#edf5fa;padding:17px;border-radius:10px;margin-bottom:23px}
+.selected-land h3{font-size:16px;color:var(--primary);margin-bottom:6px}
+.selected-land p{font-size:13px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.form-group{margin-bottom:16px}
+.form-group.full{grid-column:1/-1}
+.form-group label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;border:1px solid var(--border);border-radius:8px;padding:12px;
+  outline:none;background:#fff;font-size:13px
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--secondary)}
+.form-group textarea{resize:vertical;min-height:100px}
+.notice{font-size:12px;color:var(--muted);line-height:1.9;margin:12px 0 20px}
+.success-box{text-align:center;padding:40px 20px}
+.success-box i{font-size:55px;color:var(--green);margin-bottom:17px}
+.success-box h2{color:var(--primary);margin-bottom:10px}
+.success-box p{color:var(--muted);font-size:14px;line-height:2}
+.request-number{background:#edf5fa;padding:13px;border-radius:8px;margin:20px auto;max-width:300px;color:var(--primary);font-weight:900}
+
+/* FOOTER */
+footer{background:#071f34;color:white;padding:35px 0;margin-top:40px}
+.footer-content{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer p{font-size:12px;color:#b7c9d7;line-height:2}
+footer strong{font-size:17px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:87px;right:0;width:100%;background:white;padding:20px;flex-direction:column;align-items:flex-start;box-shadow:0 10px 15px #0001}
+  .nav-links.active{display:flex}
+  .menu-btn{display:block}
+  .nav-action{display:none}
+  .city-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  .hero h1{font-size:27px}
+  .authority-grid,.land-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .city-grid{grid-template-columns:1fr}
+  .countdown-box{padding:22px 16px}
+  .timer{width:100%;justify-content:center;gap:6px}
+  .timer-unit{width:25%;padding:9px 2px}
+  .timer-unit strong{font-size:21px}
+  .form-wrapper{padding:20px 15px}
+  .form-grid{grid-template-columns:1fr}
+  .form-group.full{grid-column:auto}
+  .land-footer{align-items:flex-start;flex-direction:column}
+  .land-footer button{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="logo" href="#"><img src="/assists/اللوجو الجديدي بدون خلفيه.png" alt="شعار المكتب"></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#">الرئيسية</a>
+      <a href="#">من نحن</a>
+      <a href="#">خدماتنا</a>
+      <a href="#">القطاعات</a>
+      <a href="#">تواصل معنا</a>
+    </nav>
+    <a href="#" class="nav-action">اطلب استشارة</a>
+    <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumb">الرئيسية / خدماتنا / <span>طرح الأراضي الصناعية</span></div>
+    <h1>طرح الأراضي الصناعية</h1>
+    <p>تابع أحدث الطروحات الصناعية، واستعرض المدن والقطع المتاحة، وتعرّف على المساحات والأسعار والتفاصيل، وابدأ إجراءات تقديم طلبك بسهولة.</p>
+  </div>
+</section>
+
+<!-- اختيار الهيئة -->
+<main class="container section" id="authoritySection">
+  <div class="section-title">
+    <h2>اختر الجهة صاحبة الطرح</h2>
+    <p>اختر الهيئة التي ترغب في استعراض الأراضي الصناعية المطروحة من خلالها</p>
+  </div>
+
+  <div class="authority-grid">
+    <div class="authority-card" onclick="openAuthority('industrial')">
+      <div class="authority-image">
+        <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=900&q=85" alt="المنشآت الصناعية">
+      </div>
+      <div class="authority-content">
+        <h3>هيئة التنمية الصناعية</h3>
+        <p>استعرض الطروحات الصناعية، والمدن والمناطق الصناعية، وتفاصيل القطع المتاحة للتقديم.</p>
+        <span class="card-link">استعراض الطرح <i class="fas fa-arrow-left"></i></span>
+      </div>
+    </div>
+
+    <div class="authority-card" onclick="openAuthority('urban')">
+      <div class="authority-image">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=85" alt="المدن العمرانية الجديدة">
+      </div>
+      <div class="authority-content">
+        <h3>هيئة المجتمعات العمرانية الجديدة</h3>
+        <p>تابع الأراضي الصناعية والاستثمارية المطروحة داخل المدن الجديدة وتفاصيل التخصيص.</p>
+        <span class="card-link">استعراض الطرح <i class="fas fa-arrow-left"></i></span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- صفحة الطرح -->
+<section class="container section hidden" id="tenderSection">
+  <button class="back-btn" onclick="goTo('authoritySection')"><i class="fas fa-arrow-right"></i> الرجوع لاختيار الهيئة</button>
+
+  <div class="countdown-box">
+    <div class="countdown-info">
+      <h2 id="tenderTitle">الطرح الصناعي التجريبي</h2>
+      <p>الوقت المتبقي حتى انتهاء فترة التقديم</p>
+    </div>
+    <div class="timer" id="timer">
+      <div class="timer-unit"><strong id="days">00</strong><span>يوم</span></div>
+      <div class="timer-unit"><strong id="hours">00</strong><span>ساعة</span></div>
+      <div class="timer-unit"><strong id="minutes">00</strong><span>دقيقة</span></div>
+      <div class="timer-unit"><strong id="seconds">00</strong><span>ثانية</span></div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><i class="fas fa-city"></i><div><strong id="cityCount">3</strong><span>مدن صناعية</span></div></div>
+    <div class="stat"><i class="fas fa-map-marked-alt"></i><div><strong id="landCount">12</strong><span>قطعة في بيانات العرض</span></div></div>
+    <div class="stat"><i class="fas fa-calendar-check"></i><div><strong>15 ديسمبر 2026</strong><span>موعد انتهاء تجريبي</span></div></div>
+  </div>
+
+  <div class="section-title">
+    <h2>المدن الصناعية المطروح بها الأراضي</h2>
+    <p>اختر المدينة لعرض القطع المتاحة وتفاصيلها</p>
+  </div>
+  <div class="city-grid" id="cityGrid"></div>
+</section>
+
+<!-- صفحة قطع المدينة -->
+<section class="container section hidden" id="landsSection">
+  <button class="back-btn" onclick="goTo('tenderSection')"><i class="fas fa-arrow-right"></i> الرجوع للمدن</button>
+  <div class="section-title">
+    <h2 id="cityTitle">قطع الأراضي</h2>
+    <p id="cityDescription">تفاصيل قطع الأراضي الصناعية المتاحة في المدينة</p>
+  </div>
+  <div class="filter-bar">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input id="landSearch" type="text" placeholder="ابحث برقم القطعة..." oninput="renderLands()">
+    </div>
+    <select id="landSort" onchange="renderLands()">
+      <option value="default">ترتيب القطع</option>
+      <option value="low">السعر من الأقل للأعلى</option>
+      <option value="high">السعر من الأعلى للأقل</option>
+      <option value="area">المساحة من الأكبر للأصغر</option>
+    </select>
+  </div>
+  <div class="land-grid" id="landGrid"></div>
+</section>
+
+<!-- نموذج التقديم -->
+<section class="container section hidden" id="applicationSection">
+  <button class="back-btn" onclick="goTo('landsSection')"><i class="fas fa-arrow-right"></i> الرجوع للقطع</button>
+  <div class="section-title">
+    <h2>طلب التقديم على قطعة أرض</h2>
+    <p>يرجى إدخال بياناتك وبيانات المشروع لاستكمال طلب التقديم التجريبي</p>
+  </div>
+
+  <div class="form-wrapper" id="applicationWrapper">
+    <div class="selected-land" id="selectedLand"></div>
+    <form id="applicationForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>اسم مقدم الطلب بالكامل *</label>
+          <input type="text" name="name" required placeholder="الاسم بالكامل">
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف *</label>
+          <input type="tel" name="phone" required pattern="[0-9+ ]{8,16}" placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني *</label>
+          <input type="email" name="email" required placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>اسم الشركة (إن وجد)</label>
+          <input type="text" name="company" placeholder="اسم الشركة">
+        </div>
+        <div class="form-group">
+          <label>النشاط الصناعي *</label>
+          <select name="activity" required>
+            <option value="">اختر النشاط</option>
+            <option>صناعات غذائية</option>
+            <option>صناعات هندسية</option>
+            <option>صناعات كيماوية</option>
+            <option>صناعات نسيجية</option>
+            <option>صناعات بلاستيكية</option>
+            <option>نشاط صناعي آخر</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>نوع مقدم الطلب *</label>
+          <select name="applicant" required>
+            <option value="">اختر النوع</option>
+            <option>فرد</option>
+            <option>شركة قائمة</option>
+            <option>شركة تحت التأسيس</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>تفاصيل المشروع أو الاستفسارات</label>
+          <textarea name="details" placeholder="اكتب نبذة مختصرة عن المشروع الصناعي..."></textarea>
+        </div>
+      </div>
+      <p class="notice"><i class="fas fa-info-circle"></i> هذا نموذج تجريبي لعرض فكرة الموقع، ولا يمثل طلب تخصيص رسميًا لدى أي جهة حكومية.</p>
+      <button class="btn" type="submit" style="width:100%">إرسال طلب التقديم <i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-content">
+    <div>
+      <strong>مكتب الدكتور طه رمضان</strong>
+      <p>للاستشارات المالية والاقتصادية ودراسات الجدوى وتقييم المشروعات</p>
+    </div>
+    <p>© 2026 جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<script>
+/* بيانات تجريبية للعرض فقط */
+const demoData = {
+  industrial: {
+    title:"الطرح التجريبي لهيئة التنمية الصناعية",
+    cities:[
+      {
+        id:1,name:"مدينة العاشر من رمضان",area:"الشرقية",
+        image:"https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=800&q=80",
+        lands:[
+          {number:"101",area:1200,price:1800,location:"المنطقة الصناعية A - مجاورة 1"},
+          {number:"102",area:1500,price:1800,location:"المنطقة الصناعية A - مجاورة 1"},
+          {number:"103",area:2000,price:1900,location:"المنطقة الصناعية B - مجاورة 2"},
+          {number:"104",area:1000,price:1850,location:"المنطقة الصناعية B - مجاورة 2"}
+        ]
+      },
+      {
+        id:2,name:"مدينة السادات",area:"المنوفية",
+        image:"https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80",
+        lands:[
+          {number:"205",area:2500,price:1600,location:"المنطقة الصناعية الأولى"},
+          {number:"206",area:1800,price:1600,location:"المنطقة الصناعية الأولى"},
+          {number:"207",area:3000,price:1700,location:"المنطقة الصناعية الثانية"},
+          {number:"208",area:1200,price:1650,location:"المنطقة الصناعية الثانية"}
+        ]
+      },
+      {
+        id:3,name:"مدينة برج العرب الجديدة",area:"الإسكندرية",
+        image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80",
+        lands:[
+          {number:"310",area:1500,price:2000,location:"المنطقة الصناعية الثالثة"},
+          {number:"311",area:2200,price:2100,location:"المنطقة الصناعية الثالثة"},
+          {number:"312",area:1800,price:2050,location:"المنطقة الصناعية الرابعة"},
+          {number:"313",area:2500,price:2100,location:"المنطقة الصناعية الرابعة"}
+        ]
+      }
+    ]
+  },
+  urban: {
+    title:"الطرح التجريبي لهيئة المجتمعات العمرانية الجديدة",
+    cities:[
+      {
+        id:4,name:"مدينة بدر",area:"القاهرة",
+        image:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+        lands:[
+          {number:"401",area:1000,price:1750,location:"المنطقة الصناعية - القطاع الأول"},
+          {number:"402",area:1400,price:1800,location:"المنطقة الصناعية - القطاع الأول"}
+        ]
+      },
+      {
+        id:5,name:"مدينة 6 أكتوبر",area:"الجيزة",
+        image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80",
+        lands:[
+          {number:"501",area:2000,price:2200,location:"المنطقة الصناعية - منطقة الخدمات"},
+          {number:"502",area:1600,price:2150,location:"المنطقة الصناعية - منطقة الخدمات"}
+        ]
+      }
+    ]
+  }
+};
+
+let currentAuthority = null;
+let currentCity = null;
+let selectedLand = null;
+
+const sections = ["authoritySection","tenderSection","landsSection","applicationSection"];
+
+function goTo(sectionId){
+  sections.forEach(id=>document.getElementById(id).classList.add("hidden"));
+  document.getElementById(sectionId).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openAuthority(type){
+  currentAuthority = demoData[type];
+  document.getElementById("tenderTitle").textContent=currentAuthority.title;
+  document.getElementById("cityCount").textContent=currentAuthority.cities.length;
+  document.getElementById("landCount").textContent=currentAuthority.cities.reduce((sum,city)=>sum+city.lands.length,0);
+  renderCities();
+  goTo("tenderSection");
+}
+
+function renderCities(){
+  const grid=document.getElementById("cityGrid");
+  grid.innerHTML="";
+  currentAuthority.cities.forEach(city=>{
+    const card=document.createElement("div");
+    card.className="city-card";
+    card.innerHTML=`
+      <img src="${city.image}" alt="${city.name}">
+      <div class="city-content">
+        <h3>${city.name}</h3>
+        <p><i class="fas fa-location-dot"></i> ${city.area}</p>
+        <div class="city-meta">
+          <span>${city.lands.length} قطع تجريبية</span>
+          <span class="available">متاحة للعرض</span>
+        </div>
+        <button class="btn" style="width:100%;margin-top:15px" onclick="openCity(${city.id})">عرض القطع <i class="fas fa-arrow-left"></i></button>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function openCity(cityId){
+  currentCity=currentAuthority.cities.find(city=>city.id===cityId);
+  document.getElementById("cityTitle").textContent="الأراضي الصناعية - "+currentCity.name;
+  document.getElementById("cityDescription").textContent="القطع التجريبية المتاحة في "+currentCity.name+" - "+currentCity.area;
+  document.getElementById("landSearch").value="";
+  document.getElementById("landSort").value="default";
+  renderLands();
+  goTo("landsSection");
+}
+
+function formatMoney(value){
+  return new Intl.NumberFormat("ar-EG").format(value);
+}
+
+function renderLands(){
+  const grid=document.getElementById("landGrid");
+  const search=document.getElementById("landSearch").value.trim();
+  let lands=currentCity.lands.filter(land=>land.number.includes(search));
+  const sort=document.getElementById("landSort").value;
+
+  if(sort==="low") lands.sort((a,b)=>a.price-b.price);
+  if(sort==="high") lands.sort((a,b)=>b.price-a.price);
+  if(sort==="area") lands.sort((a,b)=>b.area-a.area);
+
+  grid.innerHTML="";
+  if(!lands.length){
+    grid.innerHTML='<p style="grid-column:1/-1;text-align:center;padding:30px;color:#8295a7">لا توجد قطع تطابق البحث.</p>';
+    return;
+  }
+
+  lands.forEach(land=>{
+    const total=land.area*land.price;
+    const card=document.createElement("div");
+    card.className="land-card";
+    card.innerHTML=`
+      <div class="land-head">
+        <h3>قطعة رقم ${land.number}</h3>
+        <span class="status">متاحة تجريبيًا</span>
+      </div>
+      <div class="land-details">
+        <div class="detail"><span>المساحة</span><strong>${formatMoney(land.area)} م²</strong></div>
+        <div class="detail"><span>سعر المتر</span><strong>${formatMoney(land.price)} ج.م</strong></div>
+        <div class="detail"><span>إجمالي سعر القطعة</span><strong>${formatMoney(total)} ج.م</strong></div>
+        <div class="detail"><span>رقم القطعة</span><strong>${land.number}</strong></div>
+      </div>
+      <div class="land-location"><i class="fas fa-map-marker-alt"></i> ${land.location} - ${currentCity.name}</div>
+      <div class="land-footer">
+        <div class="total-price"><strong>${formatMoney(total)} جنيه</strong><span>إجمالي السعر التقديري</span></div>
+        <button class="btn" onclick="chooseLand('${land.number}')">التقديم على القطعة</button>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function chooseLand(number){
+  selectedLand=currentCity.lands.find(land=>land.number===number);
+  const total=selectedLand.area*selectedLand.price;
+  document.getElementById("selectedLand").innerHTML=`
+    <h3><i class="fas fa-map-marked-alt"></i> بيانات القطعة المختارة</h3>
+    <p>المدينة: ${currentCity.name} | رقم القطعة: ${selectedLand.number}</p>
+    <p>المساحة: ${formatMoney(selectedLand.area)} م² | سعر المتر: ${formatMoney(selectedLand.price)} جنيه</p>
+    <p>إجمالي السعر: <strong>${formatMoney(total)} جنيه</strong></p>`;
+  document.getElementById("applicationForm").reset();
+  goTo("applicationSection");
+}
+
+document.getElementById("applicationForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const requestNumber="TR-"+Math.floor(100000+Math.random()*900000);
+  const formData=new FormData(this);
+  const name=formData.get("name");
+
+  document.getElementById("applicationWrapper").innerHTML=`
+    <div class="success-box">
+      <i class="fas fa-circle-check"></i>
+      <h2>تم استلام طلبك التجريبي بنجاح</h2>
+      <p>شكرًا لك يا ${name}، تم تسجيل بيانات طلبك على القطعة رقم ${selectedLand.number} بمدينة ${currentCity.name}.</p>
+      <div class="request-number">رقم الطلب: ${requestNumber}</div>
+      <p>هذا تأكيد تجريبي للعرض فقط، ولم يتم إرسال الطلب إلى أي جهة حكومية.</p>
+      <button class="btn btn-secondary" onclick="location.reload()">العودة للرئيسية</button>
+    </div>`;
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+/* عداد تنازلي تجريبي - تاريخ انتهاء الطرح */
+const deadline=new Date("2026-12-15T23:59:59").getTime();
+
+function updateTimer(){
+  const now=Date.now();
+  const distance=deadline-now;
+  if(distance<=0){
+    document.getElementById("timer").innerHTML='<strong>انتهت فترة الطرح التجريبية</strong>';
+    return;
+  }
+  document.getElementById("days").textContent=Math.floor(distance/(1000*60*60*24));
+  document.getElementById("hours").textContent=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutes").textContent=Math.floor((distance%(1000*60*60))/(1000*60));
+  document.getElementById("seconds").textContent=Math.floor((distance%(1000*60))/1000);
+}
+updateTimer();
+setInterval(updateTimer,1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الاستشارات الاقتصادية | TAHA Ramadan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <style>
+    :root {
+      --navy: #0b2d50;
+      --red: #e40613;
+      --blue: #078bc3;
+      --text: #1d354a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #f4f8fb;
+      color: var(--text);
+      font-family: "Cairo", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 42px));
+      margin: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid #e5edf2;
+      box-shadow: 0 4px 20px rgba(6,27,49,.05);
+    }
+
+    .navbar {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .navbar-logo {
+      display: flex;
+      width: 155px;
+      align-items: center;
+    }
+
+    .navbar-logo img {
+      width: 100%;
+      max-height: 64px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 27px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #405365;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: var(--navy);
+    }
+
+    .nav-button {
+      padding: 11px 20px;
+      border-radius: 7px;
+      background: var(--red);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .nav-button:hover {
+      background: var(--navy);
+      transform: translateY(-3px);
+    }
+
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 7px;
+      background: #eef3f7;
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      margin: 4px auto;
+      background: var(--navy);
+    }
+
+    .hero {
+      padding: 75px 0;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(0,168,235,.2), transparent 25%),
+        linear-gradient(135deg, #061b31, #0b3e68);
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      color: #b9cad6;
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      transition: .25s;
+    }
+
+    .breadcrumb a:hover {
+      color: #fff;
+    }
+
+    .breadcrumb strong {
+      color: #fff;
+    }
+
+    .hero h1 {
+      margin-top: 30px;
+      max-width: 800px;
+      color: #fff;
+      font-size: clamp(35px,5vw,60px);
+      line-height: 1.4;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin-top: 16px;
+      color: #c6d5df;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .page-section {
+      padding: 75px 0;
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: minmax(300px,.75fr) minmax(0,1.6fr);
+      gap: 28px;
+      align-items: start;
+      direction: ltr;
+    }
+
+    .article,
+    .apply-card {
+      direction: rtl;
+    }
+
+    .apply-card {
+      position: sticky;
+      top: 105px;
+      padding: 28px;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 13px 34px rgba(11,45,80,.1);
+    }
+
+    .apply-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 18px;
+    }
+
+    .apply-title i {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 11px;
+      background: #e6f2f8;
+      color: var(--blue);
+    }
+
+    .apply-title h2 {
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .apply-card > p {
+      margin-bottom: 20px;
+      color: #687987;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #d9e4eb;
+      border-radius: 7px;
+      outline: none;
+      background: #f9fbfc;
+      font-family: inherit;
+      font-size: 12px;
+      padding: 11px 12px;
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(7,139,195,.12);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .apply-submit {
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .apply-submit:hover {
+      background: var(--navy);
+      transform: translateY(-3px);
+    }
+
+    .apply-note {
+      display: block;
+      margin-top: 12px;
+      color: #84929d;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .article {
+      padding: 38px;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 10px 27px rgba(11,45,80,.05);
+    }
+
+    .article h2 {
+      color: var(--navy);
+      font-size: 27px;
+      margin: 28px 0 12px;
+    }
+
+    .article h2:first-child {
+      margin-top: 0;
+    }
+
+    .article p {
+      color: #60717e;
+      font-size: 14px;
+      line-height: 2.15;
+    }
+
+    .article ul {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0;
+      list-style: none;
+    }
+
+    .article li {
+      display: flex;
+      gap: 10px;
+      color: #536674;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .article li i {
+      margin-top: 5px;
+      color: #0a9e70;
+    }
+
+    .highlight {
+      display: flex;
+      gap: 15px;
+      margin: 30px 0;
+      padding: 22px;
+      border-right: 4px solid var(--red);
+      border-radius: 9px;
+      background: #f1f7fa;
+    }
+
+    .highlight i {
+      color: var(--red);
+      font-size: 24px;
+    }
+
+    .highlight h3 {
+      color: var(--navy);
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .portfolio {
+      padding: 85px 0;
+      background: #eaf1f6;
+    }
+
+    .section-title {
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    .section-title p {
+      color: var(--red);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .section-title h2 {
+      color: var(--navy);
+      font-size: clamp(28px,4vw,42px);
+      margin-top: 8px;
+    }
+
+    .section-title span {
+      display: block;
+      margin-top: 9px;
+      color: #687987;
+      font-size: 13px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 19px;
+    }
+
+    .portfolio-card {
+      padding: 27px;
+      border-radius: 13px;
+      background: #fff;
+      box-shadow: 0 9px 24px rgba(11,45,80,.06);
+      transition: .3s;
+    }
+
+    .portfolio-card:hover {
+      background: var(--navy);
+      transform: translateY(-8px);
+    }
+
+    .portfolio-card i {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 11px;
+      background: #e7f2f8;
+      color: var(--blue);
+      font-size: 20px;
+    }
+
+    .portfolio-card h3 {
+      color: var(--navy);
+      font-size: 17px;
+      margin: 18px 0 8px;
+    }
+
+    .portfolio-card p {
+      color: #71818e;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .portfolio-card:hover h3 {
+      color: #fff;
+    }
+
+    .portfolio-card:hover p {
+      color: #c9d6df;
+    }
+
+    .site-footer {
+      padding: 22px 0;
+      background: #041323;
+      color: #b4c4d0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-content p,
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 19px;
+    }
+
+    .request-floating {
+      position: fixed;
+      z-index: 2000;
+      right: 24px;
+      bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 9px;
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(228,6,19,.32);
+      font-size: 14px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .request-floating:hover {
+      background: var(--navy);
+      transform: translateY(-4px);
+    }
+
+    .social-widget {
+      position: fixed;
+      z-index: 2000;
+      left: 24px;
+      bottom: 24px;
+    }
+
+    .social-toggle,
+    .social-menu a {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border: 0;
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .social-toggle {
+      background: var(--red);
+      font-size: 20px;
+    }
+
+    .social-menu {
+      position: absolute;
+      bottom: 62px;
+      display: grid;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: .3s;
+    }
+
+    .social-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .phone { background: #0b2d50; }
+    .whatsapp { background: #25d366; }
+    .facebook { background: #1877f2; }
+    .twitter { background: #111; }
+    .linkedin { background: #0a66c2; }
+    .instagram { background: #d62976; }
+
+    @media (max-width: 900px) {
+      .content-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .apply-card {
+        position: static;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .navbar {
+        min-height: 74px;
+        flex-wrap: wrap;
+      }
+
+      .navbar-logo {
+        width: 135px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-button {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        order: 3;
+        width: 100%;
+        padding: 5px 0 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 13px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 55px 0;
+      }
+
+      .page-section,
+      .portfolio {
+        padding: 55px 0 95px;
+      }
+
+      .article,
+      .apply-card {
+        padding: 22px;
+      }
+
+      .article h2 {
+        font-size: 23px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .request-floating {
+        right: 16px;
+        bottom: 16px;
+        font-size: 12px;
+      }
+
+      .social-widget {
+        left: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a href="index.html#home" class="navbar-logo">
+        <img src="assists/اللوجو الجديدي بدون خلفيه.png" alt="TAHA Ramadan">
+      </a>
+
+      <button class="menu-button" id="menuButton" aria-label="فتح القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#home">الرئيسية</a>
+        <a href="index.html#about">من نحن</a>
+        <a class="active" href="index.html#services">خدماتنا</a>
+        <a href="index.html#sectors">القطاعات</a>
+        <a href="index.html#contact">تواصل معنا</a>
+      </nav>
+
+      <a href="request.html" class="nav-button">اطلب استشارة</a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="breadcrumb">
+          <a href="index.html">الرئيسية</a>
+          <span>/</span>
+          <a href="index.html#services">خدماتنا</a>
+          <span>/</span>
+          <strong>الاستشارات المالية</strong>
+        </div>
+
+        <h1>الاستشارات المالية</h1>
+
+        <p>
+          حلول اقتصادية متكاملة تساعدك على فهم الأسواق، وتحليل الفرص الاستثمارية，
+          وتقييم المشروعات واتخاذ القرارات الاقتصادية الأكثر كفاءة ووضوحًا.
+        </p>
+
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container content-layout">
+
+        <aside class="apply-card">
+
+          <div class="apply-title">
+            <i class="fa-solid fa-file-circle-check"></i>
+            <h2>اطلب استشارة ماليه</h2>
+          </div>
+
+          <p>
+            اترك بياناتك وسيتواصل معك فريقنا لمناقشة احتياجاتك المالية والاستثمارية.
+          </p>
+
+          <form action="https://formsubmit.co/YOUR_COMPANY_EMAIL@gmail.com" method="POST">
+
+            <input type="hidden" name="_subject" value="طلب استشارة مالية جديد">
+            <input type="hidden" name="service" value="الاستشارات المالية">
+
+            <div class="form-group">
+              <label for="name">الاسم بالكامل</label>
+              <input id="name" type="text" name="name" placeholder="اكتب اسمك" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">رقم الهاتف</label>
+              <input id="phone" type="tel" name="phone" placeholder="01xxxxxxxxx" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">البريد الإلكتروني</label>
+              <input id="email" type="email" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="consultation">نوع الاستشارة</label>
+              <select id="consultation" name="consultation" required>
+                <option value="">اختر نوع الاستشارة</option>
+                <option>تحليل ودراسة الأسواق</option>
+                <option>تقييم المشروعات الاستثمارية</option>
+                <option>التحليل الاقتصادي للمشروعات</option>
+                <option>دراسة الفرص الاستثمارية</option>
+                <option>الاستشارات الاقتصادية للشركات</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">كيف يمكننا مساعدتك؟</label>
+              <textarea id="message" name="message" rows="4" placeholder="اكتب نبذة عن احتياجك الاقتصادي" required></textarea>
+            </div>
+
+            <button type="submit" class="apply-submit">
+              قدم طلبك الآن <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <span class="apply-note">لن نشارك بياناتك مع أي جهة أخرى.</span>
+
+          </form>
+
+        </aside>
+
+        <article class="article">
+
+          <h2>ما هي الاستشارات المالية؟</h2>
+
+          <p>
+            الاستشارات المالية هي خدمات متخصصة تهدف إلى مساعدة الأفراد والشركات
+            والمؤسسات على فهم الأوضاع المالية وتحليل الأسواق والقطاعات المختلفة，
+            من خلال دراسة البيانات والمؤشرات المالية وتحديد الفرص الاستثمارية
+            والتحديات المحتملة، بما يساهم في اتخاذ قرارات مدروسة مبنية على أسس علمية.
+          </p>
+
+          <h2>لماذا تحتاج إلى استشارة مالية؟</h2>
+
+          <p>
+            في ظل التغيرات المستمرة في الأسواق والظروف الاقتصادية، أصبح اتخاذ
+            القرارات الاستثمارية والتجارية يتطلب فهمًا دقيقًا للمتغيرات الاقتصادية.
+            تساعدك الاستشارات المالية على دراسة البيئة المحيطة بنشاطك وتحديد
+            أفضل البدائل المتاحة وتقليل المخاطر المحتملة.
+          </p>
+
+          <ul>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>فهم وتحليل الأوضاع المالية واتجاهات الأسواق.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>تحديد الفرص الاستثمارية الواعدة ودراسة جدواها.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>تقييم المخاطر والتحديات المالية المحتملة.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>دعم القرارات الاستراتيجية والتخطيط المستقبلي.</span>
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <i class="fa-solid fa-chart-line"></i>
+            <div>
+              <h3>رؤية اقتصادية أوضح</h3>
+              <p>
+                التحليل الاقتصادي الدقيق يساعدك على تحويل البيانات والمؤشرات
+                إلى قرارات عملية تدعم نجاح مشروعك واستدامة نموه.
+              </p>
+            </div>
+          </div>
+
+          <h2>ماذا نقدم ضمن الاستشارات الاقتصادية؟</h2>
+
+          <p>
+            نقدم مجموعة متكاملة من الخدمات الاستشارية التي تساعد على دراسة
+            الأسواق وتقييم الفرص الاستثمارية وتحليل العوامل الاقتصادية المؤثرة
+            على المشروعات والأنشطة التجارية، وصولًا إلى توصيات عملية تدعم
+            اتخاذ القرارات السليمة.
+          </p>
+
+          <ul>
+            <li>
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+              <span>إعداد دراسات وتحليلات السوق والقطاعات الاقتصادية.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-chart-pie"></i>
+              <span>تحليل العرض والطلب وحجم السوق والمنافسة.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-building"></i>
+              <span>تقييم المشروعات والفرص الاستثمارية المختلفة.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-globe"></i>
+              <span>دراسة المؤشرات والمتغيرات الاقتصادية وتأثيرها على النشاط.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-scale-balanced"></i>
+              <span>إعداد التوصيات والبدائل الاقتصادية لدعم متخذي القرار.</span>
+            </li>
+          </ul>
+
+          <h2>كيف نعمل على تقديم الاستشارة الاقتصادية؟</h2>
+
+          <p>
+            نعتمد على منهجية عمل منظمة تبدأ بفهم طبيعة المشروع وأهدافه،
+            ثم جمع البيانات والمعلومات وتحليلها، ودراسة السوق والفرص المتاحة،
+            وصولًا إلى إعداد تقرير استشاري يتضمن النتائج والتوصيات المناسبة
+            لطبيعة النشاط.
+          </p>
+
+          <ul>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>فهم احتياجات العميل وتحديد أهداف الدراسة.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>جمع البيانات والمعلومات الاقتصادية اللازمة.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>تحليل السوق والمؤشرات والفرص الاستثمارية.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <span>إعداد النتائج والتوصيات النهائية.</span>
+            </li>
+          </ul>
+
+          <h2>لمن نقدم خدماتنا؟</h2>
+
+          <p>
+            نقدم خدمات الاستشارات الاقتصادية لرواد الأعمال والمستثمرين والشركات
+            والمؤسسات، بالإضافة إلى أصحاب المشروعات الجديدة والقائمة الراغبين
+            في التوسع أو دخول أسواق جديدة أو تقييم فرص استثمارية قبل اتخاذ القرار.
+          </p>
+
+        </article>
+
+      </div>
+    </section>
+
+    <section class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <p>خبراتنا ومجالات عملنا</p>
+          <h2>مجالات الاستشارات الاقتصادية</h2>
+          <span>حلول تحليلية واستشارية تدعم قراراتك الاستثمارية والاقتصادية.</span>
+        </div>
+
+        <div class="portfolio-grid">
+
+          <article class="portfolio-card">
+            <i class="fa-solid fa-chart-column"></i>
+            <h3>دراسات وتحليل الأسواق</h3>
+            <p>
+              دراسة حجم الأسواق والقطاعات الاقتصادية وتحليل المنافسين
+              واتجاهات العرض والطلب لتحديد الفرص المتاحة.
+            </p>
+          </article>
+
+          <article class="portfolio-card">
+            <i class="fa-solid fa-building-circle-check"></i>
+            <h3>تقييم المشروعات الاستثمارية</h3>
+            <p>
+              تحليل المشروعات والفرص الاستثمارية من مختلف الجوانب
+              الاقتصادية لتقييم إمكانات النجاح والنمو.
+            </p>
+          </article>
+
+          <article class="portfolio-card">
+            <i class="fa-solid fa-earth-africa"></i>
+            <h3>التحليل الاقتصادي</h3>
+            <p>
+              دراسة المتغيرات والمؤشرات الاقتصادية وتحليل تأثيرها
+              على الأنشطة التجارية والاستثمارية.
+            </p>
+          </article>
+
+          <article class="portfolio-card">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h3>تحديد الفرص الاستثمارية</h3>
+            <p>
+              دراسة البدائل الاستثمارية المتاحة وتحديد الفرص الواعدة
+              وفقًا لمتطلبات السوق والظروف الاقتصادية.
+            </p>
+          </article>
+
+          <article class="portfolio-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>التخطيط الاقتصادي</h3>
+            <p>
+              إعداد الرؤى والتوصيات الاقتصادية التي تساعد المؤسسات
+              على التخطيط للتوسع وتحقيق أهدافها المستقبلية.
+            </p>
+          </article>
+
+          <article class="portfolio-card">
+            <i class="fa-solid fa-file-lines"></i>
+            <h3>التقارير والتوصيات الاقتصادية</h3>
+            <p>
+              إعداد تقارير تحليلية متخصصة تتضمن النتائج والمؤشرات
+              والتوصيات اللازمة لدعم اتخاذ القرار.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+
+      <p>© 2026 TAHA Ramadan. جميع الحقوق محفوظة.</p>
+
+      <div class="footer-links">
+        <a href="index.html#home">الرئيسية</a>
+        <a href="index.html#services">خدماتنا</a>
+        <a href="index.html#contact">تواصل معنا</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <a href="#name" class="request-floating">
+    <i class="fa-solid fa-paper-plane"></i>
+    قدم طلب الآن
+  </a>
+
+  <div class="social-widget">
+
+    <div class="social-menu" id="socialMenu">
+      <a href="tel:+201222209161" class="phone">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+
+      <a href="https://wa.me/201222209161" class="whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <a href="https://facebook.com/YOUR_PAGE" class="facebook" target="_blank">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+
+      <a href="https://x.com/YOUR_ACCOUNT" class="twitter" target="_blank">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+
+      <a href="https://linkedin.com/company/YOUR_COMPANY" class="linkedin" target="_blank">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+
+      <a href="https://instagram.com/YOUR_ACCOUNT" class="instagram" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+
+    <button class="social-toggle" id="socialToggle" aria-label="روابط التواصل">
+      <i class="fa-solid fa-comments"></i>
+    </button>
+
+  </div>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+    const socialToggle = document.getElementById("socialToggle");
+    const socialMenu = document.getElementById("socialMenu");
+
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    socialToggle.addEventListener("click", () => {
+      socialMenu.classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>

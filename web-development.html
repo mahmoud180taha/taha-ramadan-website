@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برمجة وتطوير المواقع الإلكترونية | مكتب الدكتور طه رمضان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #092c49;
+            --secondary: #10517a;
+            --red: #ed0010;
+            --background: #f2f7fa;
+            --text: #173b5b;
+            --muted: #8295a7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header {
+            height: 87px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,.06);
+        }
+
+        .logo img {
+            width: 90px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .header-btn {
+            background: var(--red);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(110deg, #09263f, #10517a);
+            padding: 65px 6%;
+            color: white;
+        }
+
+        .breadcrumbs {
+            font-size: 13px;
+            color: #c5d6e4;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumbs a:hover {
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 780px;
+            font-size: 16px;
+            color: #e1edf5;
+        }
+
+        .container {
+            max-width: 1210px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 347px 1fr;
+            gap: 26px;
+            direction: ltr;
+            align-items: start;
+        }
+
+        .form-card,
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(9,44,73,.06);
+            direction: rtl;
+        }
+
+        .form-card {
+            border-top: 4px solid var(--red);
+        }
+
+        .form-card h2 {
+            font-size: 21px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .form-card > p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dce5eb;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            background: #fbfdff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            background: var(--red);
+            color: white;
+            padding: 13px;
+            border-radius: 6px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .submit-btn:hover {
+            background: #c9000d;
+        }
+
+        .privacy-note {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 13px;
+            text-align: center;
+        }
+
+        .article-card {
+            padding: 35px;
+        }
+
+        .article-section {
+            margin-bottom: 30px;
+        }
+
+        .article-section h2 {
+            color: var(--primary);
+            font-size: 23px;
+            margin-bottom: 13px;
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .article-section h2::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 8px;
+            height: 23px;
+            width: 4px;
+            background: var(--red);
+            border-radius: 5px;
+        }
+
+        .article-section p {
+            color: #526b7f;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin-top: 18px;
+        }
+
+        .benefit-item {
+            background: #f3f8fb;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .benefit-item i {
+            color: var(--red);
+            font-size: 19px;
+        }
+
+        .highlight-box {
+            background: #eef5fa;
+            border-right: 4px solid var(--red);
+            padding: 20px;
+            border-radius: 7px;
+            margin-top: 20px;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box p {
+            font-size: 13px;
+            color: #526b7f;
+        }
+
+        .portfolio {
+            margin-top: 65px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            color: var(--primary);
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 7px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(9,44,73,.06);
+            transition: .3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 205px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            color: var(--primary);
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .project-info p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .cta {
+            background: linear-gradient(110deg, #09263f, #10517a);
+            padding: 55px 20px;
+            text-align: center;
+            color: white;
+            border-radius: 12px;
+            margin-top: 65px;
+        }
+
+        .cta h2 {
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            font-size: 14px;
+            color: #dce8f0;
+            margin-bottom: 23px;
+        }
+
+        .cta a {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: #061f34;
+            color: white;
+            padding: 45px 6% 20px;
+            margin-top: 70px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 35px;
+            max-width: 1210px;
+            margin: auto;
+        }
+
+        .footer h3 {
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .footer p,
+        .footer a {
+            color: #bdcbd7;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,.12);
+            padding-top: 18px;
+            margin-top: 35px;
+            color: #aebdca;
+            font-size: 12px;
+        }
+
+        .floating-chat {
+            position: fixed;
+            bottom: 22px;
+            left: 22px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #20b95a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.2);
+            z-index: 999;
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: var(--red);
+            color: white;
+            padding: 11px 19px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,.15);
+            z-index: 999;
+        }
+
+        @media (max-width: 1100px) {
+            .main-content {
+                grid-template-columns: 300px 1fr;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 87px;
+                right: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px;
+                box-shadow: 0 8px 15px rgba(0,0,0,.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .header-btn {
+                display: none;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                direction: rtl;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .hero {
+                padding: 45px 20px;
+            }
+
+            .hero h1 {
+                font-size: 23px;
+            }
+
+            .container {
+                margin: 40px auto;
+                padding: 0 14px;
+            }
+
+            .article-card,
+            .form-card {
+                padding: 22px;
+            }
+
+            .benefits,
+            .portfolio-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 22px;
+            }
+
+            .cta h2 {
+                font-size: 22px;
+            }
+
+            .floating-cta {
+                right: 12px;
+                bottom: 15px;
+            }
+
+            .floating-chat {
+                left: 12px;
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">
+        <img src="/assists/اللوجو الجديدي بدون خلفيه.png" alt="مكتب الدكتور طه رمضان">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="services.html">خدماتنا</a>
+        <a href="sectors.html">القطاعات</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+
+    <a href="contact.html" class="header-btn">اطلب استشارة</a>
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="breadcrumbs">
+        <a href="index.html">الرئيسية</a> / 
+        <a href="services.html">خدماتنا</a> / 
+        البرمجة وتطوير المواقع
+    </div>
+
+    <h1>برمجة وتطوير المواقع وتطبيقات الويب</h1>
+    <p>
+        نقدم حلولاً رقمية متكاملة تشمل تصميم وبرمجة المواقع الإلكترونية،
+        وتطوير تطبيقات الويب، وإدارة المواقع والمحتوى الإلكتروني،
+        لمساعدة الشركات والمؤسسات على تعزيز حضورها الرقمي وتطوير أعمالها.
+    </p>
+</section>
+
+<main class="container">
+
+    <div class="main-content">
+
+        <aside class="form-card">
+            <h2>اطلب خدمة برمجية</h2>
+            <p>اترك بياناتك وسنتواصل معك لمناقشة مشروعك وتحديد الحل المناسب.</p>
+
+            <form id="consultationForm">
+
+                <div class="form-group">
+                    <label>الاسم بالكامل</label>
+                    <input type="text" placeholder="أدخل اسمك" required>
+                </div>
+
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" placeholder="01xxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>نوع الخدمة المطلوبة</label>
+                    <select required>
+                        <option value="">اختر الخدمة</option>
+                        <option>تصميم وبرمجة موقع إلكتروني</option>
+                        <option>إنشاء متجر إلكتروني</option>
+                        <option>تطوير تطبيق ويب Web Application</option>
+                        <option>إنشاء لوحة تحكم إدارية</option>
+                        <option>إدارة موقع إلكتروني</option>
+                        <option>إدارة المقالات والمحتوى</option>
+                        <option>تحسين محركات البحث SEO</option>
+                        <option>صيانة وتطوير موقع قائم</option>
+                        <option>أخرى</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>تفاصيل المشروع</label>
+                    <textarea placeholder="اكتب تفاصيل المشروع أو الخدمة التي تحتاج إليها..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">إرسال طلب الخدمة</button>
+
+                <div class="privacy-note">
+                    بياناتك تستخدم للتواصل معك ومناقشة تفاصيل طلبك فقط.
+                </div>
+
+            </form>
+        </aside>
+
+        <article class="article-card">
+
+            <section class="article-section">
+                <h2>حلول برمجية متكاملة لتطوير أعمالك</h2>
+
+                <p>
+                    أصبحت المواقع الإلكترونية وتطبيقات الويب من أهم الأدوات
+                    التي تعتمد عليها الشركات والمؤسسات في إدارة أعمالها
+                    والتواصل مع عملائها وعرض خدماتها بصورة احترافية.
+                </p>
+
+                <p>
+                    نوفر خدمات تصميم وبرمجة المواقع الإلكترونية وتطوير
+                    تطبيقات الويب وفقاً لاحتياجات كل مشروع، بداية من
+                    دراسة الفكرة وتحديد المتطلبات، مروراً بالتصميم والبرمجة،
+                    وحتى إطلاق الموقع وإدارته وتطويره بصورة مستمرة.
+                </p>
+
+                <p>
+                    لا تقتصر خدماتنا على إنشاء الموقع فقط، بل تشمل أيضاً
+                    إدارة المحتوى ونشر المقالات والأخبار وتحديث الصفحات
+                    وإضافة الخصائص الجديدة، بما يضمن استمرار الموقع
+                    في تقديم أفضل تجربة للزوار والعملاء.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>خدمات البرمجة وتطوير الويب</h2>
+
+                <p>
+                    نقدم مجموعة متنوعة من الخدمات الرقمية التي تناسب
+                    الشركات والمؤسسات والأفراد وأصحاب المشروعات.
+                </p>
+
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-code"></i>
+                        <span>تصميم وبرمجة المواقع الإلكترونية</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>تطوير تطبيقات الويب التفاعلية</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>إنشاء المتاجر الإلكترونية</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>لوحات التحكم وإدارة البيانات</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-globe"></i>
+                        <span>إدارة وتشغيل المواقع الإلكترونية</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-newspaper"></i>
+                        <span>إدارة المقالات والمحتوى الرقمي</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-search"></i>
+                        <span>تحسين محركات البحث SEO</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>الصيانة والحماية والتحديثات</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>إدارة المواقع والمحتوى الإلكتروني</h2>
+
+                <p>
+                    نتيح لأصحاب المواقع إمكانية إدارة محتوى مواقعهم
+                    بسهولة من خلال أنظمة ولوحات تحكم مخصصة، دون الحاجة
+                    إلى التعامل المباشر مع الأكواد البرمجية في كل مرة
+                    يرغبون فيها بإجراء تعديل.
+                </p>
+
+                <p>
+                    يمكن إضافة المقالات والأخبار وتعديلها وحذفها،
+                    وإنشاء التصنيفات والأقسام، وإضافة الصور،
+                    وتحديث صفحات الموقع والخدمات، وإدارة المحتوى
+                    بصورة منظمة وسهلة.
+                </p>
+
+                <p>
+                    كما يمكن تطوير نظام خاص لإدارة المحتوى يتناسب
+                    مع طبيعة نشاط الشركة، سواء كان موقعاً إخبارياً
+                    أو موقعاً تعريفياً أو منصة لعرض الخدمات والمعلومات.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>تطوير تطبيقات الويب Web Applications</h2>
+
+                <p>
+                    نعمل على تطوير تطبيقات ويب تساعد الشركات على
+                    تحويل العمليات التقليدية إلى أنظمة رقمية منظمة،
+                    يمكن الوصول إليها من خلال المتصفح دون الحاجة
+                    إلى تثبيت برامج تقليدية على الأجهزة.
+                </p>
+
+                <p>
+                    تشمل التطبيقات الممكن تنفيذها أنظمة إدارة العملاء،
+                    وأنظمة متابعة الطلبات، ولوحات التحكم، وأنظمة
+                    إدارة المشروعات، وقواعد البيانات، والمنصات
+                    الإلكترونية المخصصة حسب طبيعة النشاط.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>لماذا تحتاج إلى موقع إلكتروني احترافي؟</h2>
+
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-building"></i>
+                        <span>تعزيز الهوية والحضور الرقمي</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <span>الوصول إلى عملاء جدد</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-clock"></i>
+                        <span>إتاحة خدماتك على مدار الساعة</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-database"></i>
+                        <span>تنظيم المعلومات والبيانات</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-edit"></i>
+                        <span>سهولة تحديث وإدارة المحتوى</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>التوافق مع الهواتف والأجهزة المختلفة</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>نحول فكرتك إلى مشروع رقمي متكامل</h3>
+                    <p>
+                        سواء كنت ترغب في إنشاء موقع تعريفي لشركتك،
+                        أو متجر إلكتروني، أو منصة لنشر المقالات،
+                        أو نظام ويب لإدارة أعمالك، نعمل على تطوير
+                        الحل المناسب وفقاً لأهدافك واحتياجات مشروعك.
+                    </p>
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+
+    <section class="portfolio">
+
+        <div class="section-heading">
+            <h2>مجالات تنفيذ المشروعات الرقمية</h2>
+            <p>حلول متنوعة تناسب مختلف الأنشطة والاحتياجات</p>
+        </div>
+
+        <div class="portfolio-grid">
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="مواقع الشركات">
+                <div class="project-info">
+                    <h3>مواقع الشركات والمؤسسات</h3>
+                    <p>
+                        مواقع إلكترونية احترافية لعرض الشركة
+                        وخدماتها وأعمالها ووسائل التواصل معها.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="المتاجر الإلكترونية">
+                <div class="project-info">
+                    <h3>المتاجر الإلكترونية</h3>
+                    <p>
+                        منصات لعرض المنتجات وإدارة الطلبات
+                        والعملاء ومتابعة عمليات البيع.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="إدارة المحتوى">
+                <div class="project-info">
+                    <h3>منصات المقالات والمحتوى</h3>
+                    <p>
+                        مواقع لنشر المقالات والأخبار وإدارة
+                        التصنيفات والصفحات من لوحة تحكم مخصصة.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>ابدأ مشروعك الرقمي معنا</h2>
+        <p>
+            أخبرنا بفكرتك وسنعمل على تحويلها إلى موقع إلكتروني
+            أو تطبيق ويب يساعدك على تطوير أعمالك.
+        </p>
+        <a href="contact.html">تواصل معنا الآن</a>
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+            <h3>مكتب الدكتور طه رمضان</h3>
+            <p>
+                للاستشارات المالية والاقتصادية ودراسات الجدوى
+                وتقييم المشروعات والحلول الرقمية.
+            </p>
+        </div>
+
+        <div>
+            <h3>روابط مهمة</h3>
+            <div class="footer-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">من نحن</a>
+                <a href="services.html">خدماتنا</a>
+                <a href="contact.html">تواصل معنا</a>
+            </div>
+        </div>
+
+        <div>
+            <h3>خدماتنا الرقمية</h3>
+            <div class="footer-links">
+                <a href="web-development.html">برمجة المواقع</a>
+                <a href="web-development.html">تطبيقات الويب</a>
+                <a href="web-development.html">إدارة المواقع</a>
+                <a href="web-development.html">إدارة المحتوى والمقالات</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        جميع الحقوق محفوظة © مكتب الدكتور طه رمضان
+    </div>
+
+</footer>
+
+<a href="https://wa.me/201055248740" class="floating-chat" target="_blank" aria-label="واتساب">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="contact.html" class="floating-cta">اطلب خدمتك الآن</a>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', function () {
+        navLinks.classList.toggle('active');
+
+        const icon = menuToggle.querySelector('i');
+
+        if (navLinks.classList.contains('active')) {
+            icon.classList.replace('fa-bars', 'fa-xmark');
+        } else {
+            icon.classList.replace('fa-xmark', 'fa-bars');
+        }
+    });
+
+    document.getElementById('consultationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('تم استلام طلبك التجريبي بنجاح، وسيتم التواصل معك قريباً.');
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

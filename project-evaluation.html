@@ -1,0 +1,1102 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقييم المشروعات | طه رمضان</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #092c49;
+    --secondary: #10517a;
+    --red: #ed0010;
+    --background: #f2f7fa;
+    --text: #173b5b;
+    --muted: #8295a7;
+    --white: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header {
+    width: 100%;
+    height: 87px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+.header-container {
+    max-width: 1210px;
+    height: 100%;
+    margin: auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+}
+
+.logo img {
+    width: 90px;
+    height: auto;
+    max-height: 75px;
+    object-fit: contain;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav a {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    transition: .3s;
+}
+
+.nav a:hover {
+    color: var(--red);
+}
+
+.header-btn {
+    background: var(--red);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.header-btn:hover {
+    background: #c9000e;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hero {
+    background: linear-gradient(110deg, #09263f, #10517a);
+    min-height: 316px;
+    display: flex;
+    align-items: center;
+    padding: 55px 20px;
+    color: white;
+}
+
+.hero-content {
+    max-width: 1210px;
+    width: 100%;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    font-size: 12px;
+    color: #c3d7e5;
+}
+
+.breadcrumb a {
+    transition: .3s;
+}
+
+.breadcrumb a:hover {
+    color: white;
+}
+
+.breadcrumb i {
+    font-size: 9px;
+    color: #8dbbd4;
+}
+
+.breadcrumb .current {
+    color: white;
+    font-weight: 800;
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 13px;
+    line-height: 1.5;
+}
+
+.hero p {
+    font-size: 14px;
+    color: #d0e0eb;
+    max-width: 750px;
+    line-height: 2;
+}
+
+.container {
+    max-width: 1210px;
+    margin: 70px auto;
+    padding: 0 15px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 347px 1fr;
+    gap: 26px;
+    direction: ltr;
+    align-items: start;
+}
+
+.main-content > * {
+    direction: rtl;
+}
+
+.form-card {
+    background: white;
+    border-radius: 14px;
+    padding: 27px;
+    box-shadow: 0 5px 30px rgba(9,44,73,.045);
+    position: sticky;
+    top: 105px;
+}
+
+.form-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+.form-title .icon {
+    width: 42px;
+    height: 42px;
+    background: #e8f5fa;
+    color: #1688b6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.form-title h2 {
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: 900;
+}
+
+.form-description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    background: #f9fbfc;
+    border: 1px solid #d9e4ec;
+    border-radius: 7px;
+    padding: 14px 12px;
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--text);
+    outline: none;
+    transition: .3s;
+}
+
+.form-group input,
+.form-group select {
+    height: 48px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #1688b6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(22,136,182,.07);
+}
+
+.form-group textarea {
+    height: 115px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    background: var(--red);
+    color: white;
+    padding: 15px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit-btn:hover {
+    background: #c9000e;
+    transform: translateY(-2px);
+}
+
+.form-note {
+    text-align: center;
+    color: #9aabb9;
+    font-size: 10px;
+    margin-top: 13px;
+}
+
+.article-card {
+    background: white;
+    border-radius: 14px;
+    padding: 40px 38px;
+    box-shadow: 0 5px 30px rgba(9,44,73,.045);
+}
+
+.article-section {
+    margin-bottom: 34px;
+}
+
+.article-section h2 {
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 17px;
+}
+
+.article-section p {
+    color: #71869a;
+    font-size: 14px;
+    line-height: 2.4;
+    text-align: justify;
+}
+
+.benefits {
+    list-style: none;
+    margin-top: 18px;
+}
+
+.benefits li {
+    color: #71869a;
+    font-size: 13px;
+    margin-bottom: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    line-height: 2;
+}
+
+.benefits i {
+    color: #0aa889;
+    margin-top: 7px;
+    font-size: 13px;
+}
+
+.highlight-box {
+    background: #f0f7fa;
+    border-right: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 22px;
+    margin-top: 25px;
+}
+
+.highlight-box h3 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+
+.highlight-box h3 i {
+    color: var(--red);
+    margin-left: 10px;
+}
+
+.highlight-box p {
+    color: #8295a7;
+    font-size: 12px;
+    line-height: 2.2;
+}
+
+.portfolio {
+    margin-top: 85px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    color: var(--primary);
+    font-size: 29px;
+    font-weight: 900;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(9,44,73,.04);
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(9,44,73,.09);
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-info {
+    padding: 22px;
+}
+
+.project-info span {
+    color: #1688b6;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.project-info h3 {
+    color: var(--primary);
+    font-size: 17px;
+    margin: 9px 0;
+}
+
+.project-info p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2.2;
+}
+
+.cta {
+    margin-top: 75px;
+    background: linear-gradient(110deg, #09263f, #10517a);
+    border-radius: 12px;
+    padding: 48px 25px;
+    text-align: center;
+    color: white;
+}
+
+.cta h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.cta p {
+    font-size: 14px;
+    color: #d0e0eb;
+    margin-bottom: 22px;
+}
+
+.cta a {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 13px 30px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.cta a:hover {
+    background: #c9000e;
+    transform: translateY(-2px);
+}
+
+.footer {
+    background: #09263f;
+    color: white;
+    padding: 45px 20px 25px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1210px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-brand h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    color: #b8c9d6;
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #d2dfe8;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    max-width: 1210px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    text-align: center;
+    color: #9bb0c1;
+    font-size: 11px;
+}
+
+.floating-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 5px 18px rgba(237,0,16,.25);
+    z-index: 999;
+    transition: .3s;
+}
+
+.floating-chat:hover {
+    transform: scale(1.08);
+}
+
+.floating-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 18px;
+    background: var(--red);
+    color: white;
+    padding: 16px 22px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 5px 20px rgba(237,0,16,.25);
+    z-index: 999;
+    transition: .3s;
+}
+
+.floating-cta:hover {
+    background: #c9000e;
+    transform: translateY(-3px);
+}
+
+@media(max-width: 1100px) {
+    .header-container {
+        padding: 0 30px;
+    }
+
+    .container {
+        padding: 0 30px;
+    }
+
+    .main-content {
+        grid-template-columns: 320px 1fr;
+    }
+
+    .nav {
+        gap: 18px;
+    }
+}
+
+@media(max-width: 800px) {
+    .header {
+        height: 75px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        width: 100%;
+        background: white;
+        padding: 20px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        box-shadow: 0 8px 15px rgba(0,0,0,.08);
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .header-btn {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        grid-row: 1;
+        position: static;
+    }
+
+    .article-card {
+        padding: 30px 25px;
+    }
+
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 550px) {
+    .hero {
+        min-height: 270px;
+        padding: 40px 15px;
+    }
+
+    .hero h1 {
+        font-size: 31px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+    .breadcrumb {
+        font-size: 10px;
+        gap: 7px;
+        margin-bottom: 23px;
+    }
+
+    .container {
+        margin: 35px auto;
+        padding: 0 15px;
+    }
+
+    .form-card {
+        padding: 23px;
+    }
+
+    .article-card {
+        padding: 25px 20px;
+    }
+
+    .article-section h2 {
+        font-size: 21px;
+    }
+
+    .article-section p {
+        font-size: 12px;
+    }
+
+    .benefits li {
+        font-size: 11px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card img {
+        height: 210px;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+    .cta h2 {
+        font-size: 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    .floating-cta {
+        bottom: 18px;
+        left: 12px;
+        padding: 12px 15px;
+        font-size: 11px;
+    }
+
+    .floating-chat {
+        bottom: 18px;
+        right: 12px;
+        width: 45px;
+        height: 45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            <img src="assists/اللوجو الجديدي بدون خلفيه.png" alt="TAHA Ramadan">
+        </a>
+
+        <nav class="nav" id="nav">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="services.html">خدماتنا</a>
+            <a href="sectors.html">القطاعات</a>
+            <a href="contact.html">تواصل معنا</a>
+        </nav>
+
+        <a href="#consultation" class="header-btn">اطلب استشارة</a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="breadcrumb">
+            <a href="index.html">الرئيسية</a>
+            <i class="fa-solid fa-chevron-left"></i>
+            <a href="services.html">خدماتنا</a>
+            <i class="fa-solid fa-chevron-left"></i>
+            <a href="project-evaluation.html" class="current">تقييم المشروعات</a>
+        </div>
+
+        <h1>تقييم المشروعات</h1>
+
+        <p>
+            خدمات متخصصة لتقييم المشروعات وتحليل أدائها المالي والاقتصادي،
+            وتحديد قيمتها الاستثمارية ودراسة فرص النمو والتوسع لدعم القرارات الاستثمارية.
+        </p>
+
+    </div>
+</section>
+
+<main class="container">
+
+    <section class="main-content">
+
+        <aside class="form-card" id="consultation">
+
+            <div class="form-title">
+                <div class="icon">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+                <h2>اطلب تقييم مشروع</h2>
+            </div>
+
+            <p class="form-description">
+                اترك بياناتك وسنتواصل معك لمناقشة تفاصيل مشروعك واحتياجاتك.
+            </p>
+
+            <form id="consultationForm">
+
+                <div class="form-group">
+                    <label for="name">الاسم بالكامل</label>
+                    <input id="name" type="text" name="name" placeholder="اكتب اسمك" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input id="phone" type="tel" name="phone" placeholder="01xxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input id="email" type="email" name="email" placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="projectName">اسم المشروع</label>
+                    <input id="projectName" type="text" name="projectName" placeholder="اكتب اسم المشروع" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectType">نوع المشروع</label>
+                    <select id="projectType" name="projectType" required>
+                        <option value="">اختر نوع المشروع</option>
+                        <option>مشروع تجاري</option>
+                        <option>مشروع صناعي</option>
+                        <option>مشروع طبي</option>
+                        <option>مشروع عقاري</option>
+                        <option>مشروع خدمي</option>
+                        <option>مشروع زراعي</option>
+                        <option>مشروع استثماري</option>
+                        <option>أخرى</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="evaluationType">نوع التقييم المطلوب</label>
+                    <select id="evaluationType" name="evaluationType" required>
+                        <option value="">اختر نوع التقييم</option>
+                        <option>تقييم مالي</option>
+                        <option>تقييم اقتصادي</option>
+                        <option>تقييم استثماري</option>
+                        <option>تقييم الأصول والممتلكات</option>
+                        <option>تقييم الأداء التشغيلي</option>
+                        <option>تقييم شامل للمشروع</option>
+                        <option>أخرى</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="details">تفاصيل المشروع</label>
+                    <textarea id="details" name="details" placeholder="اكتب نبذة عن المشروع والتقييم المطلوب..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    قدم طلبك الآن <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+                <p class="form-note">
+                    لن نشارك بياناتك مع أي جهة أخرى.
+                </p>
+
+            </form>
+
+        </aside>
+
+        <article class="article-card">
+
+            <div class="article-section">
+                <h2>ما هو تقييم المشروعات؟</h2>
+
+                <p>
+                    تقييم المشروعات هو عملية تحليل ودراسة المشروع من مختلف الجوانب
+                    المالية والاقتصادية والتشغيلية، بهدف تحديد قيمته الحقيقية وقياس
+                    مستوى أدائه ومدى قدرته على تحقيق العوائد المستهدفة.
+                    وتعتمد عملية التقييم على دراسة البيانات والمؤشرات المالية
+                    والاقتصادية وتحليل الأصول والالتزامات والتدفقات النقدية.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <h2>لماذا تحتاج إلى تقييم مشروعك؟</h2>
+
+                <p>
+                    يساعد تقييم المشروعات أصحاب الأعمال والمستثمرين على فهم الوضع
+                    الحقيقي للمشروع، خاصة عند التفكير في البيع أو الشراء أو الشراكة
+                    أو التوسع أو إعادة الهيكلة، حيث يوفر التقييم رؤية واضحة تدعم
+                    اتخاذ القرارات الاستثمارية على أسس علمية.
+                </p>
+
+                <ul class="benefits">
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        تحديد القيمة المالية والاقتصادية للمشروع.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        تحليل الأداء المالي والتشغيلي وتحديد نقاط القوة والضعف.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        دراسة الأصول والالتزامات والموارد المتاحة.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        تحديد فرص التطوير والتوسع وتحسين الربحية.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        دعم قرارات البيع والشراء والاستثمار والشراكة.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>
+                    <i class="fa-solid fa-chart-line"></i>
+                    اعرف القيمة الحقيقية لمشروعك
+                </h3>
+
+                <p>
+                    التقييم الدقيق يمنحك رؤية شاملة عن وضع مشروعك وقيمته،
+                    ويساعدك على اتخاذ قرارات استثمارية مدروسة مبنية على
+                    بيانات وتحليلات واضحة.
+                </p>
+            </div>
+
+            <div class="article-section" style="margin-top: 34px;">
+                <h2>ماذا نقدم ضمن خدمة تقييم المشروعات؟</h2>
+
+                <p>
+                    نقدم خدمات تقييم متكاملة تتناسب مع طبيعة كل مشروع وحجمه
+                    ونشاطه، من خلال تحليل البيانات المتاحة ودراسة المؤشرات
+                    المختلفة للوصول إلى نتائج وتوصيات تساعد في اتخاذ القرار المناسب.
+                </p>
+
+                <ul class="benefits">
+                    <li>
+                        <i class="fa-solid fa-calculator"></i>
+                        التقييم المالي وتحليل القوائم والمؤشرات المالية.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-building"></i>
+                        تقييم الأصول والممتلكات والمعدات.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-chart-column"></i>
+                        تحليل الإيرادات والتكاليف ومعدلات الربحية.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        تقييم الفرص الاستثمارية والبدائل المتاحة.
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        إعداد تقارير التقييم والتوصيات المهنية.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="article-section">
+                <h2>متى تحتاج إلى تقييم مشروعك؟</h2>
+
+                <p>
+                    تحتاج إلى تقييم مشروعك عند الرغبة في بيعه أو شراء مشروع قائم،
+                    أو دخول شريك جديد، أو تحديد قيمة الحصة الاستثمارية،
+                    أو الحصول على تمويل، أو دراسة فرص التوسع والتطوير،
+                    أو قياس الأداء الفعلي للمشروع مقارنة بأهدافه.
+                </p>
+            </div>
+
+        </article>
+
+    </section>
+
+    <section class="portfolio">
+
+        <div class="section-heading">
+            <h2>نماذج من أعمالنا</h2>
+            <p>مجالات خبرتنا في تقييم المشروعات وتحليل الأداء والقيمة الاستثمارية.</p>
+        </div>
+
+        <div class="projects">
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=85" alt="تقييم مشروع عقاري">
+
+                <div class="project-info">
+                    <span>تقييم المشروعات العقارية</span>
+                    <h3>تقييم المشروعات الاستثمارية</h3>
+                    <p>
+                        دراسة وتحليل القيمة الاستثمارية للمشروعات العقارية
+                        وتقييم الأصول والعوائد المتوقعة.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85" alt="التحليل المالي">
+
+                <div class="project-info">
+                    <span>التحليل المالي</span>
+                    <h3>تحليل الأداء والربحية</h3>
+                    <p>
+                        تحليل المؤشرات المالية والإيرادات والتكاليف
+                        وقياس كفاءة الأداء المالي للمشروعات.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" alt="التقييم الاقتصادي">
+
+                <div class="project-info">
+                    <span>التقييم الاقتصادي</span>
+                    <h3>دراسة القيمة الاقتصادية للمشروعات</h3>
+                    <p>
+                        دراسة العوائد الاقتصادية وتحليل الموارد
+                        والفرص الاستثمارية لدعم القرارات.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta">
+        <h2>هل ترغب في معرفة القيمة الحقيقية لمشروعك؟</h2>
+
+        <p>
+            تواصل معنا للحصول على تقييم متخصص يساعدك على اتخاذ القرار الاستثماري المناسب.
+        </p>
+
+        <a href="#consultation">
+            اطلب تقييم مشروعك الآن <i class="fa-solid fa-paper-plane"></i>
+        </a>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <h3>مكتب الدكتور طه رمضان</h3>
+            <p>للاستشارات المالية والاقتصادية ودراسات الجدوى وتقييم المشروعات.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="about.html">من نحن</a>
+            <a href="services.html">خدماتنا</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        جميع الحقوق محفوظة © مكتب الدكتور طه رمضان للاستشارات المالية والاقتصادية
+    </div>
+</footer>
+
+<a href="#consultation" class="floating-chat" aria-label="طلب تقييم">
+    <i class="fa-solid fa-comments"></i>
+</a>
+
+<a href="#consultation" class="floating-cta">
+    قدم طلبك الآن <i class="fa-solid fa-paper-plane"></i>
+</a>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("nav");
+
+menuToggle.addEventListener("click", function() {
+    nav.classList.toggle("active");
+
+    const icon = menuToggle.querySelector("i");
+
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+});
+
+nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        menuToggle.querySelector("i").className = "fa-solid fa-bars";
+    });
+});
+
+document.getElementById("consultationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (!this.reportValidity()) return;
+
+    alert("تم استلام بيانات طلب التقييم. سيتم ربط النموذج بخدمة استقبال الطلبات.");
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>
